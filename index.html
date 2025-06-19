@@ -4,28 +4,249 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fair Fare Travels</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter&display=swap&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #2c2c2c;
+    }
+
+    .layout {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (min-width: 768px) {
+      .layout {
+        flex-direction: row;
+      }
+
+      .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        flex-shrink: 0;
+      }
+
+      .container {
+        max-width: calc(100% - 250px);
+      }
+    }
+
+    .sidebar {
+      background-color: #e0e0e0;
+      padding: 20px;
+      text-align: center;
+      font-size: 1rem;
+      color: #444;
+    }
+
+    .sidebar .ad-box {
+      border: 2px dashed #aaa;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar .ad-box a {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #228B22;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .sidebar .ad-box a:hover {
+      background-color: #006400;
+    }
+
+    .container {
+      padding: 40px 20px;
+      text-align: center;
+      flex: 1;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.25rem;
+    }
+    header h2 {
+      margin-top: 20px;
+      font-size: 1.75rem;
+      color: #fff;
+      font-weight: 500;
+    }
+    header img.starburst {
+      width: 120px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .button {
+      display: inline-block;
+      background-color: #006400;
+      color: #fff;
+      border-radius: 8px;
+      padding: 15px 25px;
+      margin: 10px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #228B22;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #fff;
+      font-size: 0.9rem;
+      color: #777;
+      width: 100%;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+    .testimonial {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px auto;
+      max-width: 700px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .testimonial img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .testimonial-content {
+      text-align: left;
+    }
+    .testimonial-content p {
+      font-style: italic;
+      margin: 0;
+    }
+    .testimonial-content h4 {
+      margin-top: 10px;
+      font-weight: normal;
+      color: #444;
+    }
+    .booking-button {
+      margin-top: 20px;
+    }
+    .trust-badge {
+      background-color: #ffffff;
+      border: 2px solid #dcdcdc;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 40px auto;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .trust-badge h3 {
+      font-size: 1.5rem;
+      color: #2c2c2c;
+      margin-bottom: 10px;
+    }
+    .trust-badge p {
+      font-size: 1rem;
+      color: #555;
+    }
+    .trust-badge .stars {
+      color: gold;
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: gold;
+      color: #2c2c2c;
+      padding: 15px 20px;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 999;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 <body>
-  <header>
-    <h1>Fair Fare Travels</h1>
-    <p>Luxury travel bookings at your fingertips</p>
-  </header>
-
-  <main class="container">
-    <a href="https://expedia.com/affiliates/fair_fare_travels" class="button" aria-label="Book on Expedia" rel="noopener noreferrer" target="_blank">Book on Expedia</a>
-    <a href="https://www.hotels.com/affiliates/fair_fare_travels" class="button" aria-label="Book on Hotels.com" rel="noopener noreferrer" target="_blank">Book on Hotels.com</a>
-    <a href="https://vrbo.com/affiliates/fair_fare_travels" class="button" aria-label="Book on Vrbo" rel="noopener noreferrer" target="_blank">Book on Vrbo</a>
-    <a href="https://expedia.com/affiliate/aFQAmqn" class="button" aria-label="More Deals on Expedia" rel="noopener noreferrer" target="_blank">More Deals on Expedia</a>
-  </main>
-
-  <footer>
-    &copy; 2025 Fair Fare Travels · Affiliate commissions may apply
-    <div>
-      <a href="https://facebook.com/fairfaretravels" target="_blank" rel="noopener noreferrer">Facebook</a> |
-      <a href="https://twitter.com/fairfaretravels" target="_blank" rel="noopener noreferrer">Twitter</a>
+  <div class="layout">
+    <div class="sidebar">
+      <div class="ad-box">
+        <strong>Your Ad Here</strong><br>
+        Promote your brand with us!
+        <a href="#" target="_blank">Learn More</a>
+      </div>
     </div>
-  </footer>
+
+    <div class="container">
+      <header>
+        <h1>Fair Fare Travels</h1>
+        <p>Luxury travel bookings at your fingertips</p>
+        <h2>Celebrate July 4th with <span style="color: #FFD700;">exclusive getaway deals!</span></h2>
+        <img class="starburst" src="https://cdn.pixabay.com/photo/2017/07/18/20/39/july-2521789_1280.png" alt="Book Now">
+      </header>
+
+      <!-- Newsletter Signup -->
+      <section>
+        <h2>Stay in the Know</h2>
+        <p>Sign up for deals of the month, free greeting card downloads, and exclusive merch offers.</p>
+        <form action="https://formspree.io/f/yourformid" method="POST">
+          <input type="email" name="email" placeholder="Your email address" required style="padding: 10px; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
+          <button type="submit" class="button">Subscribe</button>
+        </form>
+      </section>
+
+      <!-- Floating CTA -->
+      <a href="mailto:sanecatv@gmail.com?subject=Turnkey Website Inquiry" class="floating-cta" title="Text SITE ME to 470-774-2370 – turnkey setup in 24hrs!">Want a site like this?</a>
+
+      <footer>
+        &copy; 2025 Fair Fare Travels &middot; Affiliate commissions may apply<br>
+        <a href="mailto:sanecatv@gmail.com">Contact: sanecatv@gmail.com</a><br>
+        <a href="/privacy-policy.html" style="color: #228B22; text-decoration: none;">Privacy Policy</a>
+      </footer>
+    </div>
+  </div>
 </body>
 </html>
+
