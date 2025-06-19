@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Luxury travel bookings at your fingertips. Celebrate July 4th with exclusive getaway deals from Fair Fare Travels.">
   <title>Fair Fare Travels</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter&display=swap" rel="stylesheet">
   <style>
@@ -12,17 +13,23 @@
       background-color: #f9f9f9;
       color: #2c2c2c;
     }
-
+    a {
+      color: #228B22;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #006400;
+      text-decoration: underline;
+    }
     .layout {
       display: flex;
       flex-direction: column;
     }
-
     @media (min-width: 768px) {
       .layout {
         flex-direction: row;
       }
-
       .sidebar {
         width: 250px;
         height: 100vh;
@@ -30,12 +37,10 @@
         top: 0;
         flex-shrink: 0;
       }
-
-      .container {
+      main.container {
         max-width: calc(100% - 250px);
       }
     }
-
     .sidebar {
       background-color: #e0e0e0;
       padding: 20px;
@@ -43,7 +48,6 @@
       font-size: 1rem;
       color: #444;
     }
-
     .sidebar .ad-box {
       border: 2px dashed #aaa;
       background-color: #fff;
@@ -51,7 +55,6 @@
       border-radius: 10px;
       margin-bottom: 20px;
     }
-
     .sidebar .ad-box a {
       display: inline-block;
       margin-top: 10px;
@@ -62,17 +65,14 @@
       text-decoration: none;
       font-size: 0.9rem;
     }
-
     .sidebar .ad-box a:hover {
       background-color: #006400;
     }
-
-    .container {
+    main.container {
       padding: 40px 20px;
       text-align: center;
       flex: 1;
     }
-
     header {
       background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1950&q=80');
       background-size: cover;
@@ -113,6 +113,8 @@
       text-decoration: none;
       font-size: 1rem;
       transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
     }
     .button:hover {
       background-color: #228B22;
@@ -199,8 +201,21 @@
       z-index: 999;
       font-family: 'Inter', sans-serif;
     }
+    .floating-cta:hover {
+      background-color: #ffe066;
+    }
+    /* Consistent style for all links in the footer */
+    footer a {
+      color: #228B22;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+      color: #006400;
+    }
   </style>
-  <!-- Google Analytics -->
+  <!-- Google Analytics (replace G-XXXXXXXXXX with your real ID) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -211,41 +226,53 @@
 </head>
 <body>
   <div class="layout">
-    <div class="sidebar">
+    <!-- Sidebar: Advertisement -->
+    <aside class="sidebar">
       <div class="ad-box">
         <strong>Your Ad Here</strong><br>
         Promote your brand with us!
-        <a href="#" target="_blank">Learn More</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">Learn More</a>
       </div>
-    </div>
-
-    <div class="container">
+    </aside>
+    <!-- Main Content -->
+    <main class="container">
       <header>
         <h1>Fair Fare Travels</h1>
         <p>Luxury travel bookings at your fingertips</p>
         <h2>Celebrate July 4th with <span style="color: #FFD700;">exclusive getaway deals!</span></h2>
-        <img class="starburst" src="https://cdn.pixabay.com/photo/2017/07/18/20/39/july-2521789_1280.png" alt="Book Now">
+        <img class="starburst" src="https://cdn.pixabay.com/photo/2017/07/18/20/39/july-2521789_1280.png" alt="Starburst icon for July 4th exclusive getaway deals">
       </header>
 
       <!-- Newsletter Signup -->
-      <section>
-        <h2>Stay in the Know</h2>
+      <section aria-labelledby="newsletter-signup">
+        <h2 id="newsletter-signup">Stay in the Know</h2>
         <p>Sign up for deals of the month, free greeting card downloads, and exclusive merch offers.</p>
-        <form action="https://formspree.io/f/mrbkljze" method="POST">
-          <input type="email" name="email" placeholder="sanecatv@gmail.com" required style="padding: 10px; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
-          <button type="submit" class="button">Subscribe</button>
+        <form action="https://formspree.io/f/mrbkljze" method="POST" autocomplete="off">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter your email" 
+            required 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            style="padding: 10px; width: 250px; border-radius: 5px; border: 1px solid #ccc;"
+            aria-label="Your email address"
+          >
+          <button type="submit" class="button" aria-label="Subscribe to newsletter">Subscribe</button>
         </form>
       </section>
 
       <!-- Floating CTA -->
-      <a href="mailto:sanecatv@gmail.com?subject=Turnkey Website Inquiry" class="floating-cta" title="Text SITE ME to 470-774-2370 – turnkey setup in 24hrs!">Want a site like this?</a>
+      <a href="mailto:sanecatv@gmail.com?subject=Turnkey Website Inquiry" class="floating-cta" title="Text SITE ME to 470-774-2370 – turnkey setup in 24hrs!" rel="noopener">Want a site like this?</a>
 
       <footer>
         &copy; 2025 Fair Fare Travels &middot; Affiliate commissions may apply<br>
-        <a href="mailto:https://formspree.io/f/mrbkljze">Contact: https://formspree.io/f/mrbkljze</a><br>
-        <a href="/privacy-policy.html" style="color: #228B22; text-decoration: none;">Privacy Policy</a>
+        <a href="mailto:sanecatv@gmail.com" aria-label="Contact via Email">Email</a>
+        &middot;
+        <a href="https://t.me/fairefaretravels" target="_blank" rel="noopener noreferrer" aria-label="Contact via Telegram">Telegram</a>
+        <br>
+        <a href="/privacy-policy.html">Privacy Policy</a>
       </footer>
-    </div>
+    </main>
   </div>
 </body>
 </html>
